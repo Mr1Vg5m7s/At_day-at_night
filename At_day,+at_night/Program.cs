@@ -8,6 +8,25 @@ namespace At_day__at_night
     {
         static void Main(string[] args)
         {
+            Console.BackgroundColor = ConsoleColor.Black;
+            Console.ForegroundColor = ConsoleColor.Yellow;
+
+
+            Birthday birthday  = new Birthday(27, 12, 2009);
+            birthday.ShowBirthday();
+            birthday.DayInWeekOfBirthday();
+            birthday.WhatDayOnNumber(23,06,2025);
+
+
+
+
+
+
+
+
+
+
+
             //int[] arr = new int[10];
             //int[] arr1 = {2,2,2];
             //int[] arr2;
@@ -18,6 +37,7 @@ namespace At_day__at_night
             Console.WriteLine("number: ");
             num1 = Convert.ToInt32(Console.ReadLine());
             num2 = Convert.ToInt32(Console.ReadLine());
+
             num3 = Convert.ToInt32(Console.ReadLine());
             int Count = 0;
             for (int i = 0; i < arr1.Length; i++) 
@@ -99,14 +119,7 @@ namespace At_day__at_night
             Console.WriteLine(min);
             */
             //777777777777777777777777777777777777777777777777
-            string? st = "First Rule of the Fight club";
-            Console.WriteLine(st.Split(" ",StringSplitOptions.RemoveEmptyEntries).Count());
-            var words = st.Split();
-            for (int i = 0; i < st.Length; i++)
-            {
-                words[i] = new string(words[i].Reverse().ToArray());
-            }
-            Console.WriteLine(String.Join(" ", words));
+
 
             /*
             Random random = new Random();
@@ -149,10 +162,10 @@ namespace At_day__at_night
                 }
             }
             Console.WriteLine($"Positiv: {CountP} Negativ: {CountN} Unique: {CountZ}");
+            
+
+
             */
-
-
-
 
 
             /*
