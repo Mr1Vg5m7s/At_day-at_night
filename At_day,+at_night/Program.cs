@@ -11,11 +11,8 @@ namespace At_day__at_night
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
-
-            Birthday birthday  = new Birthday(27, 12, 2009);
-            birthday.ShowBirthday();
-            birthday.DayInWeekOfBirthday();
-            birthday.WhatDayOnNumber(23,06,2025);
+            //Animals tiger = new Tiger("Tiger", 5, "Rrrr");
+            //tiger.Print();
 
 
 
