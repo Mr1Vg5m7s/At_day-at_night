@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.Tracing;
 using System.Runtime.InteropServices.Marshalling;
+using System.Text.RegularExpressions;
 
 namespace At_day__at_night
 {
@@ -11,9 +12,25 @@ namespace At_day__at_night
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
-            //Animals tiger = new Tiger("Tiger", 5, "Rrrr");
-            //tiger.Print();
+            //Tiger tiger = new Tiger("Tiger", 5, "Rrrr");
+            //tiger.Show();
+            //tiger.Show();
 
+            Group group = new Group();
+            Console.WriteLine("Group");
+            Console.WriteLine("-----------");
+            foreach (Student student in group)
+            {
+                Console.WriteLine(student);
+            }
+            Console.WriteLine("-----------");
+            Array.Sort((Student[])group);
+            Console.WriteLine("Sorted Group");
+            Console.WriteLine("-----------");
+            foreach (Student student in group)
+            {
+                Console.WriteLine(student);
+            }
 
 
 

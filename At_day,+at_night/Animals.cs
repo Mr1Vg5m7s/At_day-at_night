@@ -3,26 +3,29 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace At_day__at_night
 {
     internal class Animals
     {
-        string name;
-        int age;
+        public string name;
+        public int age;
         public Animals(string n, int a)
         {
             name = n;
             age = a;
         }
 
-        public void Print()
+       public void Print()
         {
             Console.WriteLine($"Name: {name}, Age: {age}");
         }
+
+        
     }
 
-    class Tiger : Animals
+    class Tiger : Animals, IOutput
     {
         string vois;
         public Tiger(string n, int a, string v) : base(n, a)
@@ -33,6 +36,16 @@ namespace At_day__at_night
         {
             base.Print();
             Console.WriteLine($"Salary: {vois}");
+        }
+
+        public void Show()
+        {
+            Console.WriteLine($"Name: {name}, Age: {age}");
+        }
+
+        public void Show(string info)
+        {
+            Console.WriteLine($"Name: {name}, Age: {age}", "Зверинец в норме");
         }
 
     }
@@ -65,4 +78,6 @@ namespace At_day__at_night
             Console.WriteLine($"Salary: {vois}");
         }
     }
+
+
 }
