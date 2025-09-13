@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace P41_C_Sharp
+namespace At_day__at_night
 {
 
     class StudentCard
@@ -49,9 +49,9 @@ namespace P41_C_Sharp
             students = new Student[4]
             {
                 new Student { LastName="Sidorov", FirstName="Ivan",   BirthDay=new DateTime(2000,10,5), StudentCard=new StudentCard { Series="AC", Number=123456 } },
-                new Student { LastName="Ivanova", FirstName="Maria",  BirthDay=new DateTime(2000,10,3), StudentCard=new StudentCard { Series="AB", Number=123455 } },
-                new Student { LastName="Ivanov",  FirstName="Sidr",   BirthDay=new DateTime(2002,3,3),  StudentCard=new StudentCard { Series="AA", Number=123456 } },
-                new Student { LastName="Smirnov", FirstName="Sergey", BirthDay=new DateTime(1999,4,4),  StudentCard=new StudentCard { Series="AB", Number=123466 } }
+                new Student { LastName="Ivanova", FirstName="Maria",  BirthDay=new DateTime(2000,10,3), StudentCard=new StudentCard { Series="AB", Number=223455 } },
+                new Student { LastName="Ivanov",  FirstName="Sidr",   BirthDay=new DateTime(2002,3,3),  StudentCard=new StudentCard { Series="AA", Number=323456 } },
+                new Student { LastName="Smirnov", FirstName="Sergey", BirthDay=new DateTime(1999,4,4),  StudentCard=new StudentCard { Series="AB", Number=423466 } }
             };
         }
 
@@ -59,7 +59,6 @@ namespace P41_C_Sharp
         {
             return students.GetEnumerator();
         }
-
 
 
 
@@ -86,8 +85,8 @@ namespace P41_C_Sharp
             return DateTime.Compare(st1!.BirthDay, st2!.BirthDay);
         }
     }
-
-    class SerialNumberComparer : IComparer
+    
+    class SerialsANDnumber : IComparer
     {
         public int Compare(object? x, object? y)
         {
@@ -95,9 +94,8 @@ namespace P41_C_Sharp
             Student? st2 = y as Student;
             int res = st1!.StudentCard!.Series!.CompareTo(st2!.StudentCard!.Series!);
             if (res == 0)
-                res = st1.StudentCard.Number.CompareTo(st2.StudentCard.Number);
+                res = st1.StudentCard!.Number.CompareTo(st2.StudentCard!.Number);
             return res;
-            
         }
     }
 }

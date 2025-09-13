@@ -1,4 +1,5 @@
-﻿using System;
+﻿using P41_C_Sharp;
+using System;
 using System.Diagnostics.Tracing;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text.RegularExpressions;
@@ -18,18 +19,19 @@ namespace At_day__at_night
 
             Group group = new Group();
             Console.WriteLine("Group");
-            Console.WriteLine("-----------");
-            foreach (Student student in group)
+            Console.WriteLine("----------------------------------------");
+            foreach (Student s in group)
             {
-                Console.WriteLine(student);
+                Console.WriteLine(s);
             }
-            Console.WriteLine("-----------");
-            Array.Sort((Student[])group);
-            Console.WriteLine("Sorted Group");
-            Console.WriteLine("-----------");
-            foreach (Student student in group)
+
+            group.Sort(new SerialsANDnumber());
+
+            Console.WriteLine();
+            Console.WriteLine("----------------------------------------");
+            foreach (Student s in group)
             {
-                Console.WriteLine(student);
+                Console.WriteLine(s);
             }
 
 
