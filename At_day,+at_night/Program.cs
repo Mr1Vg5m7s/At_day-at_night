@@ -3,20 +3,101 @@ using System;
 using System.Diagnostics.Tracing;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text.RegularExpressions;
+using System.Collections;
 
 namespace At_day__at_night
 {
     internal class Program
     {
+        static void PrintGroup(Hashtable group)
+        {
+            foreach (Student key in group.Keys)
+            {
+                Console.Write($"{key.LastName}{key.FirstName} - ");
+                foreach (int item in (ArrayList)group[key])
+                {
+                    Console.Write($"{item} ");
+                }
+                Console.WriteLine();
+            }
+            
+        }
+
+        static void AddMarkStudent(string lastName, string firstName, int mark, Hashtable group)
+        {
+            foreach (Student key in group.Keys)
+            {
+                if(key.LastName == lastName && key.FirstName == firstName)
+                {
+                    ((ArrayList)group[key]).Add(mark);
+                    PrintGroup(group);
+                }
+            }
+        }
+
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
+
+
+            Hashtable group = new Hashtable
+{
+    {
+        new Student
+        {
+            LastName = "Sidorov",
+            FirstName = "Ivan",
+            BirthDay = new DateTime(2000, 10, 5),
+            StudentCard = new StudentCard
+            {
+                Series = "AC",
+                Number = 123456
+            }
+        },
+        new ArrayList{ 8,9,8,6}
+    },
+
+    {
+        new Student
+        {
+            LastName = "Ivanova",
+            FirstName = "Maria",
+            BirthDay = new DateTime(2000, 10, 3),
+            StudentCard = new StudentCard
+            {
+                Series = "AB",
+                Number = 123455
+            }
+        },
+        new ArrayList{ 7,9,8,10}
+    },
+
+    {
+        new Student
+        {
+            LastName = "Ivanov",
+            FirstName = "Sidr",
+            BirthDay = new DateTime(2002, 3, 3),
+            StudentCard = new StudentCard
+            {
+                Series = "AA",
+                Number = 123456
+            }
+        },
+        new ArrayList{ 6,9,8,9}
+    }
+              
+};
+
+            AddMarkStudent("Sidorov", "Ivan", 10, group);
+
+
             //Tiger tiger = new Tiger("Tiger", 5, "Rrrr");
             //tiger.Show();
             //tiger.Show();
-
+            /*
             Group group = new Group();
             Console.WriteLine("Group");
             Console.WriteLine("----------------------------------------");
@@ -33,7 +114,7 @@ namespace At_day__at_night
             {
                 Console.WriteLine(s);
             }
-
+            */
 
 
 
