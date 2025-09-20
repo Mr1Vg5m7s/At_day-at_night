@@ -8,11 +8,21 @@ using System.Threading.Tasks;
 namespace At_day__at_night
 {
 
-    class StudentCard
+    class StudentCard : IComparable<StudentCard>, ICloneable
     {
         public string? Series { get; set; }
 
         public int Number { get; set; }
+
+        public object Clone()
+        {
+            return this.MemberwiseClone();
+        }
+
+        public int CompareTo(StudentCard? sc)
+        {
+            return (Series + Number.ToString()).CompareTo(sc!.Series + sc!.Number.ToString());
+        }
 
         public override string ToString()
         {
@@ -21,22 +31,41 @@ namespace At_day__at_night
     }
 
 
-    class Student : IComparable
+    class Student : IComparable<Student>, ICloneable
     {
         public string? LastName { get; set; }
         public string? FirstName { get; set; }
         public DateTime BirthDay { get; set; }
         public StudentCard? StudentCard { get; set; }
 
-        public int CompareTo(object? obj)
+        public static IComparer<Student> FromBirthDay { get; } = new DateComparer();
+
+        public static IComparer<StudentCard> FromStudentCard { get; } = new StudentCardComparer();
+
+        public int CompareTo(Student? st)
         {
-            Student? st = obj as Student;
-            return (LastName + FirstName).CompareTo(st!.LastName + st!.FirstName);
+
+            if (st != null)
+                return (LastName + FirstName).CompareTo(st.LastName + st.FirstName);
+
+            throw new NullReferenceException("  ");
         }
 
         public override string ToString()
         {
             return $"{LastName,-10} {FirstName,-8} {BirthDay.ToShortDateString()} {StudentCard}";
+        }
+
+        public object Clone()
+        {
+            Student temp = (Student)this.MemberwiseClone();
+            temp.StudentCard = new StudentCard { Series = this.StudentCard!.Series, Number = this.StudentCard!.Number };
+            return temp;
+        }
+
+        public override int GetHashCode()
+        {
+            return (LastName + FirstName).GetHashCode();
         }
     }
 
@@ -49,9 +78,9 @@ namespace At_day__at_night
             students = new Student[4]
             {
                 new Student { LastName="Sidorov", FirstName="Ivan",   BirthDay=new DateTime(2000,10,5), StudentCard=new StudentCard { Series="AC", Number=123456 } },
-                new Student { LastName="Ivanova", FirstName="Maria",  BirthDay=new DateTime(2000,10,3), StudentCard=new StudentCard { Series="AB", Number=223455 } },
-                new Student { LastName="Ivanov",  FirstName="Sidr",   BirthDay=new DateTime(2002,3,3),  StudentCard=new StudentCard { Series="AA", Number=323456 } },
-                new Student { LastName="Smirnov", FirstName="Sergey", BirthDay=new DateTime(1999,4,4),  StudentCard=new StudentCard { Series="AB", Number=423466 } }
+                new Student { LastName="Ivanova", FirstName="Maria",  BirthDay=new DateTime(2000,10,3), StudentCard=new StudentCard { Series="AB", Number=123455 } },
+                new Student { LastName="Ivanov",  FirstName="Sidr",   BirthDay=new DateTime(2002,3,3),  StudentCard=new StudentCard { Series="AA", Number=123456 } },
+                new Student { LastName="Smirnov", FirstName="Sergey", BirthDay=new DateTime(1999,4,4),  StudentCard=new StudentCard { Series="AB", Number=123466 } }
             };
         }
 
@@ -59,6 +88,7 @@ namespace At_day__at_night
         {
             return students.GetEnumerator();
         }
+
 
 
 
@@ -76,26 +106,20 @@ namespace At_day__at_night
 
 
 
-    class DateComparer : IComparer
+    class DateComparer : IComparer<Student>
     {
-        public int Compare(object? x, object? y)
+        public int Compare(Student? st1, Student? st2)
         {
-            Student? st1 = x as Student;
-            Student? st2 = y as Student;
             return DateTime.Compare(st1!.BirthDay, st2!.BirthDay);
         }
     }
-    
-    class SerialsANDnumber : IComparer
+
+
+    class StudentCardComparer : IComparer<StudentCard>
     {
-        public int Compare(object? x, object? y)
+        public int Compare(StudentCard? st1, StudentCard? st2)
         {
-            Student? st1 = x as Student;
-            Student? st2 = y as Student;
-            int res = st1!.StudentCard!.Series!.CompareTo(st2!.StudentCard!.Series!);
-            if (res == 0)
-                res = st1.StudentCard!.Number.CompareTo(st2.StudentCard!.Number);
-            return res;
+            return st1!.CompareTo(st2!);
         }
     }
 }

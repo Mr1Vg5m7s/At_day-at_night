@@ -34,13 +34,41 @@ namespace At_day__at_night
                 }
             }
         }
+        ////////////////////////////////////////////////////
+        static T Maximym<T>(T a1, T a2, T a3) where T : IComparable<T>
+        {
+            if (a1.CompareTo(a2) >= 0 && a1.CompareTo(a3) >= 0)
+            {
+                return a1;
+            }
+            else if (a2.CompareTo(a3) >= 0)
+            {
+                return a2;
+            }
+            else
+            {
+                return a3;
+            }
+        }
+        //////////////////////////////////////////////////////////////
 
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
+            Oceanarium oceanarium = new Oceanarium("Ocean", "Kyiv", 5000, 250);
+            Console.WriteLine(oceanarium.ToString()); 
 
+
+
+
+
+
+
+            //Point3D<int> point1 = new Point3D<int>(10,5,5);
+
+            /*
 
             Hashtable group = new Hashtable
 {
@@ -91,7 +119,7 @@ namespace At_day__at_night
               
 };
 
-            AddMarkStudent("Sidorov", "Ivan", 10, group);
+            AddMarkStudent("Sidorov", "Ivan", 10, group);*/
 
 
             //Tiger tiger = new Tiger("Tiger", 5, "Rrrr");
