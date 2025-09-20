@@ -25,7 +25,7 @@ namespace At_day__at_night
             return $"{Name} {Location} {SumOfFish} {TicketPrice}";
         }
     }
-
+     
     class Fish() { }
     class Medusa() { }
 
