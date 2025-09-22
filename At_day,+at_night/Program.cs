@@ -57,10 +57,28 @@ namespace At_day__at_night
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
-            Oceanarium oceanarium = new Oceanarium("Ocean", "Kyiv", 5000, 250);
-            Console.WriteLine(oceanarium.ToString()); 
 
 
+            //Лишь полностью рабитый человек, может по настоящему познать настоящую любовь.
+            /*Calculator calculator = new Calculator();
+            string expr = Console.ReadLine()!;
+            string[] parts = expr.Split(' ');
+            // 10 + 20
+            int a = Int32.Parse(parts[0]);
+            int b = Int32.Parse(parts[2]);
+            char oper = parts[1][0];
+
+            CalcDelegate calc = null;
+            calc = new CalcDelegate(calculator.Sum);
+            calc += calculator.Diff;
+            calc += new CalcDelegate(Calculator.Mult);
+            calc += calculator.Div;
+
+            foreach (CalcDelegate item in calc.GetInvocationList())
+            {
+                Console.WriteLine(item(a, b));
+            }
+            */
 
 
 

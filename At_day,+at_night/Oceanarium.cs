@@ -8,6 +8,7 @@ namespace At_day__at_night
 {
     internal class Oceanarium
     {
+        /*
         public string? Name { get; set; }
         public string? Location { get; set; }
         public int? SumOfFish { get; set; }
@@ -24,10 +25,10 @@ namespace At_day__at_night
         {
             return $"{Name} {Location} {SumOfFish} {TicketPrice}";
         }
-    }
      
     class Fish() { }
     class Medusa() { }
 
-    //class  () { }
+    //class  () { }*/
+    }
 }
