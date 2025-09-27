@@ -9,6 +9,7 @@ namespace At_day__at_night
 {
     internal class Program
     {
+
         static void PrintGroup(Hashtable group)
         {
             foreach (Student key in group.Keys)
@@ -52,14 +53,17 @@ namespace At_day__at_night
         }
         //////////////////////////////////////////////////////////////
 
+        public delegate bool Dayoff(DateTime date);
+
         static void Main(string[] args)
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
+            
+            
 
 
-            //Лишь полностью рабитый человек, может по настоящему познать настоящую любовь.
             /*Calculator calculator = new Calculator();
             string expr = Console.ReadLine()!;
             string[] parts = expr.Split(' ');
