@@ -4,6 +4,7 @@ using System.Diagnostics.Tracing;
 using System.Runtime.InteropServices.Marshalling;
 using System.Text.RegularExpressions;
 using System.Collections;
+using System.Text;
 
 namespace At_day__at_night
 {
@@ -60,9 +61,31 @@ namespace At_day__at_night
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
-            
-            
+            using (FileStream fs = new FileStream("file.bin", FileMode.Create, FileAccess.Write, FileShare.None))
+            {
+                string text = Console.ReadLine()!;
+                byte[] bytes = Encoding.UTF8.GetBytes(text);
+                fs.Write(bytes, 0, bytes.Length);
+            }
 
+            using (FileStream fs = new FileStream("file.bin", FileMode.Open, FileAccess.Read, FileShare.None))
+            {
+                byte[] bytes = new byte[fs.Length];
+                fs.Read(bytes, 0, bytes.Length);
+                string text = Encoding.UTF8.GetString(bytes);
+                Console.WriteLine(text);
+            }
+
+            using (FileStream fs = new FileStream("file2.bin", FileMode.Create))
+            {
+                using (BinaryWriter writer = new BinaryWriter(fs, Encoding.UTF8))
+                {
+                    writer.Write(123);
+                    writer.Write(45.67);
+                    writer.Write(true);
+                    writer.Write("Hello");
+                }
+            }
 
             /*Calculator calculator = new Calculator();
             string expr = Console.ReadLine()!;
