@@ -60,7 +60,7 @@ namespace At_day__at_night
         {
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
-
+            /*
             using (FileStream fs = new FileStream("file.bin", FileMode.Create, FileAccess.Write, FileShare.None))
             {
                 string text = Console.ReadLine()!;
@@ -86,6 +86,12 @@ namespace At_day__at_night
                     writer.Write("Hello");
                 }
             }
+            */
+
+            //FileInfo dir = new FileInfo("C:\\Users\\ma\\source\\repos\\At_day,+at_night\\At_day,+at_night\\text.txt");
+            //dir.MoveTo("C:\\Users\\ma\\source\\repos\\At_day,+at_night\\text.txt");
+
+            //dir.CopyTo("C:\\Users\\ma\\source\\repos\\text.txt");
 
             /*Calculator calculator = new Calculator();
             string expr = Console.ReadLine()!;
@@ -107,7 +113,13 @@ namespace At_day__at_night
             }
             */
 
-
+            string pattern = @"^\d+\.\d";
+            Regex regex = new Regex(pattern);
+            while(true)
+            {
+                string text = Console.ReadLine();
+                Console.WriteLine(regex.IsMatch(text));
+            }
 
 
 
