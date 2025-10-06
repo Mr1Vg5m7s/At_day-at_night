@@ -5,6 +5,10 @@ using System.Runtime.InteropServices.Marshalling;
 using System.Text.RegularExpressions;
 using System.Collections;
 using System.Text;
+using System.Xml.Serialization;
+using System.Xml
+
+using System.Xml.Linq;
 
 namespace At_day__at_night
 {
@@ -52,14 +56,48 @@ namespace At_day__at_night
                 return a3;
             }
         }
+
+
+
+
         //////////////////////////////////////////////////////////////
 
         public delegate bool Dayoff(DateTime date);
 
         static void Main(string[] args)
         {
+            //+380677157144
+
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load("Computers.xml");
+
+            List<Computer> computers = new List<Computer>();
+
+            foreach (var item in doc.DocumentElement)
+            {
+                Computer comp = new Computer();
+
+            }
+
+            var compGame = computers.Where(c => c.Type == "Game").ToList();
+            foreach (var computer in compGame)
+            {
+                Console.WriteLine(item);
+            }
+            
+            /*
+            Student st = new Student { LastName = "Sidorov", FirstName = "Ivan", BirthDay = new DateTime(2000, 10, 5), StudentCard = new StudentCard { Series = "AC", Number = 123456 } };
+
+            XmlSerializer xml = new XmlSerializer(typeof(Student));
+
+            using (Stream s = File.Create("student.xml"))
+            {
+                xml.Serialize(s, st);
+            }*/
+
             /*
             using (FileStream fs = new FileStream("file.bin", FileMode.Create, FileAccess.Write, FileShare.None))
             {
@@ -112,14 +150,14 @@ namespace At_day__at_night
                 Console.WriteLine(item(a, b));
             }
             */
-
+            /*
             string pattern = @"^\d+\.\d";
             Regex regex = new Regex(pattern);
             while(true)
             {
                 string text = Console.ReadLine();
                 Console.WriteLine(regex.IsMatch(text));
-            }
+            }*/
 
 
 
