@@ -66,8 +66,8 @@ namespace At_day__at_night
 
         static void Main(string[] args)
         {
-            //+380677157144
-
+            //+380677157144 //Приветсвую, сделай страничку сайта, визуально напоминающую Fandom, по теме игры Дарк сОУЛС 3 РАЗРАБОТЧИКИ КОТОРОЙ ЯВЛЯЮТЬСЯ FromSoftware. Слева с краю, должен быть список имеющихся в игре боссов, по центру информация по ним и по возомжности фотография. слева, вероятный дроп, с того или иного босса. 
+            /*
             Console.BackgroundColor = ConsoleColor.Black;
             Console.ForegroundColor = ConsoleColor.Yellow;
 
@@ -86,8 +86,8 @@ namespace At_day__at_night
             foreach (var computer in compGame)
             {
                 Console.WriteLine(item);
-            }
-            
+            }*/
+
             /*
             Student st = new Student { LastName = "Sidorov", FirstName = "Ivan", BirthDay = new DateTime(2000, 10, 5), StudentCard = new StudentCard { Series = "AC", Number = 123456 } };
 
